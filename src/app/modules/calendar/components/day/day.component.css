@@ -1,0 +1,21 @@
+:host {
+    flex: 1 0 calc(100% / 7);
+    height: 75px;
+
+    padding: 8px;
+
+    border-right: solid 1px #ccc;
+}
+:host:last-child {
+    border-right: none;
+}
+
+.day {
+    position: relative;
+}
+
+.day-header > .date {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

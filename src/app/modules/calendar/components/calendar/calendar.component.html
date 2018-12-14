@@ -1,0 +1,15 @@
+<div class="calendar-component">
+  <div>{{getMonthName(getMonth())}} {{getYear()}}</div>
+  <div>
+    <button (click)="setPrevYear()">&lt;&lt; {{getPrevYear()}}</button>
+    <button (click)="setPrevMonth()">&lt; {{MONTHS[getPrevMonth()]}}</button>
+
+    <button (click)="setNextMonth()">{{MONTHS[getNextMonth()]}} &gt;</button>
+    <button (click)="setNextYear()">{{getNextYear()}} &gt;&gt;</button>
+  </div>
+  <div class="calendar">
+    <div class="week" *ngFor="let week of weeks">
+      <app-day *ngFor="let day of week" [date]="makeDate(year, month, day)" [sub]="day <= 0 || day > daysInMonth"></app-day>
+    </div>
+  </div>
+</div>

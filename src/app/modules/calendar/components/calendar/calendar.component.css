@@ -1,0 +1,13 @@
+.calendar {
+    border: solid 1px #ccc;
+
+    border-radius: 4px;
+}
+
+.week {
+    border-bottom: solid 1px #ccc;
+}
+
+.week:last-child {
+    border-bottom: 0;
+}
