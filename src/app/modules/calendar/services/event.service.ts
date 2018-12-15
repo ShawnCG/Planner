@@ -23,8 +23,8 @@ export class EventService {
       id: 3,
       title: 'Demo Event 2',
 
-      start: { year: 2018, month: 12, day: 9, hour: 15, minute: 0 },
-      end: { year: 2018, month: 12, day: 9, hour: 16, minute: 45 }
+      start: { year: 2018, month: 12, day: 13, hour: 15, minute: 0 },
+      end: { year: 2018, month: 12, day: 17, hour: 16, minute: 45 }
     },
     {
       id: 4,

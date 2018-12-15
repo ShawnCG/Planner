@@ -1,8 +1,7 @@
 :host {
     flex: 1 0 calc(100% / 7);
-    height: 75px;
+    height: 100px;
 
-    padding: 8px;
 
     border-right: solid 1px #ccc;
 }
@@ -10,14 +9,20 @@
     border-right: none;
 }
 
+
 .day {
+    height: 100%;
     position: relative;
 
     text-align: left;
+
+    background-color: #ffffff;
 }
 
 .day-header {
     display: flex;
+
+    padding: 8px 8px 4px 8px;
 }
 
 .day-header > .date {
@@ -26,4 +31,9 @@
 
 .day-header > .day-menu {
     flex-grow: 3;
+}
+
+.day.sub {
+    background-color: #dddddd;
+    opacity: .66;
 }

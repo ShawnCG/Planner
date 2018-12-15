@@ -9,7 +9,8 @@
   </div>
   <div class="calendar">
     <div class="week" *ngFor="let week of weeks">
-      <app-day *ngFor="let day of week" [date]="makeDate(year, month, day)" [sub]="isDaySub(day)" [events]="eventservice.getDayEvents(makeDate(year, month, day))"></app-day>
+      <app-day class="app-day" [ngClass]="isDaySub(day) == true ? 'sub': ''" *ngFor="let day of week" [date]="makeDate(year, month, day)"
+        [sub]="isDaySub(day)" [events]="eventservice.getDayEvents(makeDate(year, month, day))"></app-day>
     </div>
   </div>
 </div>
