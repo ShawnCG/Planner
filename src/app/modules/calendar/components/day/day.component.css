@@ -12,10 +12,18 @@
 
 .day {
     position: relative;
+
+    text-align: left;
+}
+
+.day-header {
+    display: flex;
 }
 
 .day-header > .date {
-    position: absolute;
-    top: 0;
-    left: 0;
+    margin-right: 4px;
+}
+
+.day-header > .day-menu {
+    flex-grow: 3;
 }

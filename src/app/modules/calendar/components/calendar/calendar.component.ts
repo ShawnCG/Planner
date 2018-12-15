@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit, Directive, Input } from '@angular/core';
+import { EventService } from '../../services/event.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class CalendarComponent implements OnInit {
 
   weeks;
 
-  constructor() {
+  constructor(private eventservice: EventService) {
   }
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class CalendarComponent implements OnInit {
 
     // const date = new Date;
 
-    this.setDate(new Date(2018, 10));
+    this.setDate(new Date());
 
   }
 
@@ -125,6 +126,10 @@ export class CalendarComponent implements OnInit {
     return this.MONTHS[month];
   }
 
+  isDaySub(day) {
+    return day <= 0 || day > this.daysInMonth;
+  }
+
   private generate() {
 
     let html = '';
@@ -151,12 +156,6 @@ export class CalendarComponent implements OnInit {
       weeks.push(week);
     }
     this.weeks = weeks;
-  }
-
-  onKey(ev) {
-    this.month = ev.target.value - 1;
-
-    this.setDate(new Date(this.year, this.month, 1));
   }
 
 }
