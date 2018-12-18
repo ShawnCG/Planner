@@ -2,15 +2,29 @@
   <div>{{getMonthName(getMonth())}} {{getYear()}}</div>
   <div>
     <button (click)="setPrevYear()">&lt;&lt; {{getPrevYear()}}</button>
-    <button (click)="setPrevMonth()">&lt; {{MONTHS[getPrevMonth()]}}</button>
+    <button (click)="setPrevMonth()">&lt; {{getMonthName(getPrevMonth())}}</button>
 
-    <button (click)="setNextMonth()">{{MONTHS[getNextMonth()]}} &gt;</button>
+    <button (click)="setNextMonth()">{{getMonthName(getNextMonth())}} &gt;</button>
     <button (click)="setNextYear()">{{getNextYear()}} &gt;&gt;</button>
   </div>
   <div class="calendar">
-    <div class="week" *ngFor="let week of weeks">
-      <app-day class="app-day" [ngClass]="isDaySub(day) == true ? 'sub': ''" *ngFor="let day of week" [date]="makeDate(year, month, day)"
-        [sub]="isDaySub(day)" [events]="eventservice.getDayEvents(makeDate(year, month, day))"></app-day>
+    <div class="shadow">
+      <div class="week" *ngFor="let week of weeks">
+        <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub' : ''"></div>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="week" *ngFor="let week of weeks">
+        <div class="events">
+          <app-event *ngFor="let event of eventservice.getWeekEvents(week); let i = index" [position]="event.position"
+            [event]="event" [week]="week"></app-event>
+        </div>
+        <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub': ''">
+          <div class="day-header">
+            <div class="date">{{day.getDate()}}</div>
+            <div class="day-menu"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>

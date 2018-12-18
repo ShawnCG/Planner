@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Renderer } from '@angular/core';
 
 @Component({
   selector: 'app-event',
@@ -7,25 +7,66 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EventComponent implements OnInit {
   @Input() event;
-  @Input() date: Date;
+  @Input() week: Array<Date>;
+  @Input() position;
 
-  constructor() { }
+  constructor(private elRef: ElementRef, private renderer: Renderer) { }
 
   ngOnInit() {
+    this.setClasses();
   }
 
-  eventClass() {
-    let classname = [];
-    const day = this.date.getDate();
-    if (this.event.start.day == day) {
-      classname.push('start');
+  getTitle() {
+
+    return this.event.title;
+  }
+
+  setPosition() {
+    const that = this
+    const classArr = ['event-host'];
+
+    let start = null;
+    let end = null;
+
+    this.week.forEach(function (date) {
+
+    });
+  }
+
+  setClasses() {
+    const that = this;
+    const classArr = ['event-host'];
+
+    // Set position class
+    classArr.push('position-' + this.position);
+
+    let start = null;
+    let end = null;
+
+    this.week.forEach(function (date) {
+      if (date.getDate() == that.event.start.day) {
+        start = date.getDay();
+      }
+      if (date.getDate() == that.event.end.day) {
+        end = date.getDay();
+      }
+    });
+
+    if (start === null) {
+      classArr.push('start-before');
+    } else {
+      classArr.push('start-' + start);
     }
 
-    if (this.event.end.day == day) {
-      classname.push('end');
+    if (end === null) {
+      classArr.push('end-after');
+    } else {
+      classArr.push('end-' + end);
     }
 
-    return classname.join(' ');
+    classArr.forEach(function (classname) {
+      that.renderer.setElementClass(that.elRef.nativeElement, classname, true)
+    });
   }
 
 }

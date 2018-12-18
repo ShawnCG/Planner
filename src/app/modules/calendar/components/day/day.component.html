@@ -1,9 +1,0 @@
-<div class="day" [ngClass]="sub == true ? 'sub' : ''">
-  <div class="day-header">
-    <div class="date">{{getDate()}}</div>
-    <div class="day-menu"></div>
-  </div>
-  <div class="events" *ngIf="events != null">
-    <app-event *ngFor="let event of events" [event]="event" [date]="date"></app-event>
-  </div>
-</div>

@@ -32,7 +32,7 @@ export class CalendarComponent implements OnInit {
   private daysInMonth;
   private currentDate;
 
-  weeks;
+  private weeks;
 
   constructor(private eventservice: EventService) {
   }
@@ -126,13 +126,12 @@ export class CalendarComponent implements OnInit {
     return this.MONTHS[month];
   }
 
-  isDaySub(day) {
-    return day <= 0 || day > this.daysInMonth;
+  isDaySub(date) {
+    return date.getMonth() !== this.month;
   }
 
   private generate() {
 
-    let html = '';
     let currentWeek = 0;
     let iDate = -this.monthFirstDay;
 
@@ -145,10 +144,11 @@ export class CalendarComponent implements OnInit {
     while (currentWeek++ <= 5) {
       const week = [];
       let weekDay = 0;
-      html = html + '<div class="week">';
 
       while (weekDay++ <= 6) {
-        week.push(iDate);
+        const weekDate = new Date(this.year, this.month, iDate + 1);
+
+        week.push(weekDate);
 
         iDate++;
       }

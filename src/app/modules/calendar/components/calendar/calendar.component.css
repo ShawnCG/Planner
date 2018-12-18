@@ -3,12 +3,157 @@
 
     border-radius: 4px;
     overflow: hidden;
+
+    position: relative;
 }
 
-.week {
-    border-bottom: solid 1px #ccc;
+.calendar .week {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-.week:last-child {
-    border-bottom: 0;
+.calendar .week > .day {
+    flex: 1 0;
+
+    width: calc(100% / 7);
+    
+    min-height: 112px;
+    position: relative;
+
+    text-align: left;
+}
+
+/** Shadow calendar CSS **/
+
+.shadow .day {
+    border: solid 1px #bbbbbb;
+
+    background-color: #ffffff;
+}
+
+.shadow .day.sub {
+    background-color: #dddddd;
+    opacity: .66;
+}
+
+/** Contents calendar CSS **/
+
+.calendar > .contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.contents .day > .day-header {
+    display: flex;
+    font-size: 13px;
+}
+
+.contents .day > .day-header > div {
+    padding: 4px;
+    flex: 1;
+}
+
+/** Events **/
+
+.contents .week > .events {
+    position: absolute;
+    z-index: 5;
+    
+    margin-top: 24px;
+
+    width: 100%;
+}
+
+
+.event-host {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.event-host.position-0 {
+    top: 0;
+}
+
+.event-host.position-1 {
+    top: 21px;
+}
+
+.event-host.position-2 {
+    top: 42px;
+}
+
+.event-host.position-3 {
+    top: 63px;
+}
+
+.event-host.start-before {
+    left: calc((100% / 7) * 0);
+}
+
+.event-host.start-0 {
+    left: calc((100% / 7) * 0);
+}
+
+.event-host.start-1 {
+    left: calc((100% / 7) * 1);
+}
+
+.event-host.start-2 {
+    left: calc((100% / 7) * 2);
+}
+
+.event-host.start-3 {
+    left: calc((100% / 7) * 3);
+}
+
+.event-host.start-4 {
+    left: calc((100% / 7) * 4);
+}
+
+.event-host.start-5 {
+    left: calc((100% / 7) * 5);
+}
+
+.event-host.start-6 {
+    left: calc((100% / 7) * 6);
+}
+
+
+
+
+.event-host.end-after {
+    right: 0;
+}
+
+.event-host.end-6 {
+    right: calc((100% / 7) * 0);
+}
+
+.event-host.end-5 {
+    right: calc((100% / 7) * 1);
+}
+
+.event-host.end-4 {
+    right: calc((100% / 7) * 2);
+}
+
+.event-host.end-3 {
+    right: calc((100% / 7) * 3);
+}
+
+.event-host.end-2 {
+    right: calc((100% / 7) * 4);
+}
+
+.event-host.end-1 {
+    right: calc((100% / 7) * 5);
+}
+
+.event-host.end-0 {
+    right: calc((100% / 7) * 6);
 }
