@@ -156,6 +156,8 @@ export class CalendarComponent implements OnInit {
       weeks.push(week);
     }
     this.weeks = weeks;
-  }
 
+
+    this.eventservice.loadMonthEvents(this.year, this.month + 1);
+  }
 }
