@@ -4,10 +4,7 @@ import { ApiService } from 'src/app/components/api/api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CalendarApiService extends ApiService {
+export class EventApiService extends ApiService {
 
-  protected defaults = ApiService.assignDefaults({
-    secure: true
-  });
 
 }

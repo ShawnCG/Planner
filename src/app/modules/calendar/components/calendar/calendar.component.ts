@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, Directive, Input } from '@angular/core';
-import { EventService } from '../../services/event.service';
+import { EventService } from '../../services/event/event.service';
 
 
 @Component({
@@ -74,12 +74,16 @@ export class CalendarComponent implements OnInit {
     this.setDate(new Date(this.year, month % 12));
   }
 
+  gotoToday() {
+    this.setDate(new Date());
+  }
+
   getNextMonth() {
     const month = this.month;
     return ((month + 1) % 12);
   }
 
-  setNextMonth() {
+  gotoNextMonth() {
     this.setDate(new Date(this.year, this.month + 1));
   }
 
@@ -94,7 +98,7 @@ export class CalendarComponent implements OnInit {
     return month;
   }
 
-  setPrevMonth() {
+  gotoPrevMonth() {
     this.setDate(new Date(this.year, this.month - 1));
   }
 

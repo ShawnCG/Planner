@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CalendarApiService } from './api/calendarapi.service';
+import { EventApiService } from './../api/eventapi.service';
 
 @Injectable()
 export class EventService {
@@ -11,12 +11,16 @@ export class EventService {
 
   private eventComponents = {};
 
-  constructor(private api: CalendarApiService) { }
+  constructor(private api: EventApiService) { }
 
   loadMonthEvents(year, month) {
-    const request = this.api.get('event/month', {
-      y: year,
-      m: month
+    const request = this.api.get('/list', {
+      data: {
+        c: [1, 2],
+        key: 1,
+        y: year,
+        m: month
+      }
     });
 
     request
@@ -25,8 +29,6 @@ export class EventService {
           if (this.loadedEvents.indexOf(event.id) === -1) {
             this.events.push(event);
             this.loadedEvents.push(event.id);
-
-            console.dir(event);
           }
         }.bind(this));
       }.bind(this));

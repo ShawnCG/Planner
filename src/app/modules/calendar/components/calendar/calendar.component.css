@@ -1,3 +1,20 @@
+:host {
+    height: 100%;
+}
+.calendar-component {
+    height: 100%;
+}
+.calendar-component > .header > .controls {
+    float: left;
+    font-size: 32px;
+}
+
+.calendar-component > .header > .title {
+    float: left;
+    font-size: 24px;
+    font-weight: 500;
+}
+
 .calendar {
     border: solid 1px #ccc;
 
@@ -5,25 +22,43 @@
     overflow: hidden;
 
     position: relative;
+    height: 100%;
+}
+
+.calendar > div {
+    display: flex;
+    flex-direction: column;
 }
 
 .calendar .week {
-    display: flex;
-    flex-wrap: nowrap;
+    min-height: 0;
+    flex: 1;
 }
 
-.calendar .week > .day {
+.calendar .week > .inner {
+    display: relative;
+    
+    display: flex;
+    flex-wrap: nowrap;
+
+    height: 100%;
+}
+
+.calendar .inner > .day {
     flex: 1 0;
 
     width: calc(100% / 7);
     
-    min-height: 112px;
+    height: 100%;
     position: relative;
 
     text-align: left;
 }
 
 /** Shadow calendar CSS **/
+.calendar > .shadow {
+    height: 100%;
+}
 
 .shadow .day {
     border: solid 1px #bbbbbb;
@@ -59,13 +94,14 @@
 
 /** Events **/
 
-.contents .week > .events {
+.contents .inner > .events {
     position: absolute;
     z-index: 5;
     
     margin-top: 24px;
 
     width: 100%;
+    height: 100%;
 }
 
 

@@ -7,12 +7,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ApiService {
 
-    protected baseUrl = '';
+    protected static baseUrl = '';
 
-    protected defaults = {
+    protected static defaults = {
         method: 'get',
         url: null,
         data: {},
+        secure: false,
         auth: {
             username: null,
             password: null
@@ -21,14 +22,40 @@ export class ApiService {
 
     private allowed_methods = ['delete', 'get', 'head', 'jsonp', 'options', 'patch', 'options', 'patch', 'post', 'put'];
 
-    constructor(private http: HttpClient) { }
+    // This allows us to reference the static class within a non-static method, even if the class is extended.
+    'constructor': Pick<typeof ApiService, keyof typeof ApiService>;
+
+    constructor(private http: HttpClient) {
+        // Static methods don't compile unless they are called somewhere in the class.
+        this.constructor.setBaseUrl(this.constructor.getBaseUrl());
+    }
+
+    static getBaseUrl() {
+        return this.baseUrl;
+    }
+
+    static setBaseUrl(url) {
+        this.baseUrl = url;
+    }
+
+    static getDefaults() {
+        return this.defaults;
+    }
+
+    static assignDefaults(...sources) {
+        sources.unshift(this.getDefaults());
+        return Object.assign.apply(null, sources);
+    }
 
     request(options) {
-        const method = options.method || this.defaults.method;
-        const data = options.data || this.defaults.data;
+        const defaults = this.constructor.getDefaults();
+        const method = options.method || defaults.method;
+        const data = options.data || defaults.data;
+        const secure = options.secure || defaults.secure;
 
+        const url = options.url || defaults.url;
 
-        const url = options.url || this.defaults.url;
+        let scheme = 'http';
 
         // Doing some type checking
         if (typeof method !== 'string') {
@@ -49,86 +76,89 @@ export class ApiService {
         }
 
         // Todo: Add authentication
+        if (secure === true) {
+            scheme = 'https';
+        }
 
-        return this.http[method](this.baseUrl + '/' + url, { params: data });
+        return this.http[method](scheme + '://' + this.constructor.getBaseUrl() + url, { params: data });
     }
 
-    delete(url: String, data?: Object) {
-        const options = {
+    delete(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'delete',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    get(url: String, data?: Object) {
-        const options = {
+    get(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'get',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    head(url: String, data?: Object) {
-        const options = {
+    head(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'head',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    jsonp(url: String, data?: Object) {
-        const options = {
+    jsonp(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'jsonp',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    options(url: String, data?: Object) {
-        const options = {
+    options(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'options',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    patch(url: String, data?: Object) {
-        const options = {
+    patch(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'patch',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    post(url: String, data?: Object) {
-        const options = {
+    post(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'post',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }
 
-    put(url: String, data?: Object) {
-        const options = {
+    put(url: String, options?: Object) {
+        options = options || {};
+        options = Object.assign({
             method: 'put',
-            url: url,
-            data: data || {}
-        };
+            url
+        }, options);
 
         return this.request(options);
     }

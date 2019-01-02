@@ -1,28 +1,34 @@
 <div class="calendar-component">
-  <div>{{getMonthName(getMonth())}} {{getYear()}}</div>
-  <div>
-    <button (click)="setPrevYear()">&lt;&lt; {{getPrevYear()}}</button>
-    <button (click)="setPrevMonth()">&lt; {{getMonthName(getPrevMonth())}}</button>
+  <div class="header clearfix">
+    <div class="controls">
+      <button class="btn" (click)="gotoToday()" bind-attr.data-tooltip="getMonthName(getMonth())">Today</button>
 
-    <button (click)="setNextMonth()">{{getMonthName(getNextMonth())}} &gt;</button>
-    <button (click)="setNextYear()">{{getNextYear()}} &gt;&gt;</button>
+      <button class="btn" (click)="gotoPrevMonth()" bind-attr.data-tooltip="getMonthName(getPrevMonth())"><i class="fas fa-chevron-left"></i></button>
+
+      <button class="btn" (click)="gotoNextMonth()" bind-attr.data-tooltip="getMonthName(getNextMonth())"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="title">{{getMonthName(getMonth())}} {{getYear()}}</div>
   </div>
   <div class="calendar">
     <div class="shadow">
       <div class="week" *ngFor="let week of weeks">
-        <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub' : ''"></div>
+        <div class="inner">
+          <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub' : ''"></div>
+        </div>
       </div>
     </div>
     <div class="contents">
       <div class="week" *ngFor="let week of weeks">
-        <div class="events">
-          <app-event *ngFor="let event of eventservice.getWeekEvents(week); let i = index" [position]="event.position"
-            [event]="event" [week]="week"></app-event>
-        </div>
-        <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub': ''">
-          <div class="day-header">
-            <div class="date">{{day.getDate()}}</div>
-            <div class="day-menu"></div>
+        <div class="inner">
+          <div class="events">
+            <app-event *ngFor="let event of eventservice.getWeekEvents(week); let i = index" [position]="event.position"
+              [event]="event" [week]="week"></app-event>
+          </div>
+          <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub': ''">
+            <div class="day-header">
+              <div class="date">{{day.getDate()}}</div>
+              <div class="day-menu"></div>
+            </div>
           </div>
         </div>
       </div>
