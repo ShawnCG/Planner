@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, Directive, Input } from '@angular/core';
-import { EventService } from '../../services/event/event.service';
+import { EventService } from '../../services/event.service';
 
 
 @Component({
@@ -64,6 +64,10 @@ export class CalendarComponent implements OnInit {
 
   public makeDate(year, month, day) {
     return new Date(year, month, day);
+  }
+
+  getWeeks() {
+    return this.weeks;
   }
 
   getMonth() {
@@ -133,6 +137,7 @@ export class CalendarComponent implements OnInit {
   isDaySub(date) {
     return date.getMonth() !== this.month;
   }
+
 
   private generate() {
 

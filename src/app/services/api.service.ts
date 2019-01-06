@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 // Todo: non-api request service that ApiService extends?
@@ -55,6 +55,8 @@ export class ApiService {
 
         const url = options.url || defaults.url;
 
+        let params = new HttpParams();
+
         let scheme = 'http';
 
         // Doing some type checking
@@ -68,6 +70,12 @@ export class ApiService {
 
         if (typeof data !== 'object') {
             throw new Error('data must be a plain object');
+        } else {
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    params = params.set(key, data[key]);
+                }
+            }
         }
 
         // We don't want to allow a method we don't recognize.
@@ -80,7 +88,19 @@ export class ApiService {
             scheme = 'https';
         }
 
-        return this.http[method](scheme + '://' + this.constructor.getBaseUrl() + url, { params: data });
+        const request = [];
+
+        // Url
+        request.push(scheme + '://' + this.constructor.getBaseUrl() + url);
+
+        if (['post', 'put'].indexOf(method) !== -1) {
+            request.push(data);
+        } else {
+            // Fix this, it's not correct.
+            request.push({ params });
+        }
+
+        return this.http[method].apply(this.http, request);
     }
 
     delete(url: String, options?: Object) {

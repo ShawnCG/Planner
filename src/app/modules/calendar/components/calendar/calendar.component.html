@@ -11,14 +11,14 @@
   </div>
   <div class="calendar">
     <div class="shadow">
-      <div class="week" *ngFor="let week of weeks">
+      <div class="week" *ngFor="let week of getWeeks()">
         <div class="inner">
           <div class="day" *ngFor="let day of week" [ngClass]="isDaySub(day) == true ? 'sub' : ''"></div>
         </div>
       </div>
     </div>
     <div class="contents">
-      <div class="week" *ngFor="let week of weeks">
+      <div class="week" *ngFor="let week of getWeeks()">
         <div class="inner">
           <div class="events">
             <app-event *ngFor="let event of eventservice.getWeekEvents(week); let i = index" [position]="event.position"

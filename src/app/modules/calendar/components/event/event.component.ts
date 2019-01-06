@@ -22,7 +22,7 @@ export class EventComponent implements OnInit {
   }
 
   setPosition() {
-    const that = this
+    const that = this;
     const classArr = ['event-host'];
 
     let start = null;

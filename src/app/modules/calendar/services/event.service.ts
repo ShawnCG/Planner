@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EventApiService } from './../api/eventapi.service';
+import { EventApiService } from 'src/app/services/api/eventapi.service';
 
 @Injectable()
 export class EventService {
@@ -48,6 +48,7 @@ export class EventService {
       const month = date.getMonth() + 1;
       const day = date.getDate();
 
+      // Get positions of multiday events before today.
       that.events.forEach(function (event: any) {
 
         const startDate = new Date(event.start.year, event.start.month - 1, event.start.day, 0, 0, 0, 0);
@@ -57,6 +58,27 @@ export class EventService {
         const endTime = endDate.getTime() / 1000;
 
         if (startTime <= dateTime && endTime >= dateTime) {
+          if (events.indexOf(event) !== -1) {
+
+            if (positions.indexOf(event.position) === -1) {
+              positions.push(event.position);
+            }
+            position++;
+          }
+        }
+      });
+
+      that.events.forEach(function (event: any) {
+
+        const startDate = new Date(event.start.year, event.start.month - 1, event.start.day, 0, 0, 0, 0);
+        const endDate = new Date(event.end.year, event.end.month - 1, event.end.day, 23, 59, 59);
+
+        const startTime = startDate.getTime() / 1000;
+        const endTime = endDate.getTime() / 1000;
+
+        if (startTime <= dateTime && endTime >= dateTime) {
+
+          // If the event does not already exist in the week
           if (events.indexOf(event) === -1) {
             let eventPosition = 0;
             while (positions.indexOf(eventPosition) !== -1) {
@@ -66,11 +88,6 @@ export class EventService {
             events.push(event);
 
             positions.push(eventPosition);
-          } else {
-            if (positions.indexOf(event.position) === -1) {
-              positions.push(event.position);
-            }
-            position++;
           }
         }
 
