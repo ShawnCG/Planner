@@ -10,6 +10,7 @@ export class EventComponent implements OnInit {
   @Input() week: Array<Date>;
   @Input() position;
 
+
   constructor(private elRef: ElementRef, private renderer: Renderer) { }
 
   ngOnInit() {
@@ -25,16 +26,12 @@ export class EventComponent implements OnInit {
     const that = this;
     const classArr = ['event-host'];
 
-    let start = null;
-    let end = null;
-
     this.week.forEach(function (date) {
 
     });
   }
 
   setClasses() {
-    const that = this;
     const classArr = ['event-host'];
 
     // Set position class
@@ -44,13 +41,13 @@ export class EventComponent implements OnInit {
     let end = null;
 
     this.week.forEach(function (date) {
-      if (date.getDate() == that.event.start.day) {
+      if (date.getDate().toString() === this.event.start.day) {
         start = date.getDay();
       }
-      if (date.getDate() == that.event.end.day) {
+      if (date.getDate().toString() === this.event.end.day) {
         end = date.getDay();
       }
-    });
+    }.bind(this));
 
     if (start === null) {
       classArr.push('start-before');
@@ -65,8 +62,8 @@ export class EventComponent implements OnInit {
     }
 
     classArr.forEach(function (classname) {
-      that.renderer.setElementClass(that.elRef.nativeElement, classname, true)
-    });
+      this.renderer.setElementClass(this.elRef.nativeElement, classname, true);
+    }.bind(this));
   }
 
 }

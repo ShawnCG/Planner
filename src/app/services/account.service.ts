@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountApiService } from './api/accountapi.service';
 
-import { AttemptModel } from '../components/models/attempt-model/attempt-model';
+import { AttemptModel } from 'src/app/models/attempt-model/attempt-model';
 
 @Injectable({
   providedIn: 'root'

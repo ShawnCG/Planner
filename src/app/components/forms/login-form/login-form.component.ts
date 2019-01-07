@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AttemptModel } from '../../models/attempt-model/attempt-model';
+import { AttemptModel } from 'src/app/models/attempt-model/attempt-model';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
