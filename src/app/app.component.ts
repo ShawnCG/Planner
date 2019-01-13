@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from './services/account.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +11,7 @@ export class AppComponent implements OnInit {
 
   router = Router;
 
-  constructor(private account: AccountService) { }
+  constructor() { }
 
   ngOnInit() {
   }

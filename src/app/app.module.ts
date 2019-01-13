@@ -9,29 +9,20 @@ import { CalendarModule } from './modules/calendar/calendar.module';
 
 import './config/config';
 
-import { HomeComponent } from './components/pages/home/home.component';
-import { LoginComponent } from './components/pages/login/login.component';
-import { RegisterComponent } from './components/pages/register/register.component';
-import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-
-    LoginFormComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: '', component: HomePageComponent }
     ]),
 
     CalendarModule

@@ -10,6 +10,4 @@ if (environment.production) {
 } else {
     ApiService.setBaseUrl('206.189.199.10/api');
     CalendarApiService.setBaseUrl(ApiService.getBaseUrl() + '/calendars');
-    EventApiService.setBaseUrl(ApiService.getBaseUrl() + '/events');
-    AccountApiService.setBaseUrl(ApiService.getBaseUrl() + '/account');
 }
