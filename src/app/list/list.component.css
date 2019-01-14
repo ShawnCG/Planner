@@ -1,0 +1,16 @@
+.view {
+    line-height: 1;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+label {
+    margin: 0;
+}
+
+.destroy {
+    float: right;
+    line-height: 30px;
+    padding: 0;
+    box-sizing: border-box;
+}

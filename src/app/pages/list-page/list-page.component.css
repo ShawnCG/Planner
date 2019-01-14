@@ -1,0 +1,51 @@
+.list {
+}
+
+app-lists-header,
+.list > .main,
+.list > .footer {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.new-list {
+    width: 100%;
+    line-height: 1;
+    padding: 12px;
+
+    font-size: 24px;
+
+    border: solid 1px #aaa;
+
+    outline: 0;
+}
+
+.lists-list {
+    padding: 0;
+    margin: 12px 0 0 0;
+    list-style: none;
+
+    padding: 0 12px;
+}
+
+.list-item {
+    padding: 6px 12px;
+
+    background-color: #fff;
+
+    border: solid 1px #aaa;
+
+    border-bottom-width: 0;
+
+    line-height: 1;
+    font-size: 18px;
+}
+
+.lists-list .list-item:last-child {
+    border-bottom-width: 1px;
+}
+
+
+.destroy {
+    float: right;
+}

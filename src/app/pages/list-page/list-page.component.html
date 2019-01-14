@@ -1,0 +1,5 @@
+<section class="list">
+  <app-lists-header (add)="onAddList($event)"></app-lists-header>
+  <app-lists [lists]="lists" (remove)="onRemoveList($event)"></app-lists>
+  <app-lists-footer [lists]="lists"></app-lists-footer>
+</section>

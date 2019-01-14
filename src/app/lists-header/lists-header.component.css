@@ -1,0 +1,16 @@
+.lists-header {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.new-list {
+    width: 100%;
+    line-height: 1;
+    padding: 12px;
+
+    font-size: 24px;
+
+    border: solid 1px #aaa;
+
+    outline: 0;
+}

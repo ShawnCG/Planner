@@ -1,0 +1,7 @@
+<section class="lists" *ngIf="lists.length > 0">
+  <ul class="lists-list">
+    <li *ngFor="let list of lists" class="list-item" [class.completed]="list.complete">
+      <app-list [list]="list" (toggleComplete)="onToggleComplete($event)" (remove)="onRemoveList($event)"></app-list>
+    </li>
+  </ul>
+</section>

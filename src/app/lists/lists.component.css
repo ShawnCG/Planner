@@ -1,0 +1,31 @@
+.lists {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.lists-list {
+    padding: 0;
+    margin: 12px 0 0 0;
+    list-style: none;
+
+    padding: 0 12px;
+}
+
+
+.list-item {
+    padding: 6px 12px;
+
+    background-color: #fff;
+
+    border: solid 1px #aaa;
+
+    border-bottom-width: 0;
+
+    line-height: 1;
+    font-size: 18px;
+}
+
+
+.lists-list .list-item:last-child {
+    border-bottom-width: 1px;
+}
