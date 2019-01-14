@@ -7,7 +7,7 @@ import { Component, OnInit, ElementRef, Renderer } from '@angular/core';
 })
 export class CreateEventComponent implements OnInit {
 
-  private shown = false;
+  shown = false;
 
   constructor(private elRef: ElementRef, private renderer: Renderer) { }
 

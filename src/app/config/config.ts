@@ -6,8 +6,10 @@ import { AccountApiService } from '../services/api/accountapi.service';
 
 if (environment.production) {
     ApiService.setBaseUrl('');
-    CalendarApiService.setBaseUrl(ApiService.getBaseUrl() + '');
+    CalendarApiService.setBaseUrl(ApiService.getBaseUrl() + '/calendars');
+    EventApiService.setBaseUrl(ApiService.getBaseUrl() + '/events');
 } else {
     ApiService.setBaseUrl('206.189.199.10/api');
     CalendarApiService.setBaseUrl(ApiService.getBaseUrl() + '/calendars');
+    EventApiService.setBaseUrl(ApiService.getBaseUrl() + '/calendars');
 }
