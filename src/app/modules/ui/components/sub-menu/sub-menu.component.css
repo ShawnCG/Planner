@@ -1,0 +1,32 @@
+:host {
+  z-index: -10;
+}
+
+.sub-menu {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: calc(100% - 1px);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: width .15s ease-in-out;
+
+
+  z-index: -10;
+
+  width: 0;
+  background-color: #fff;
+
+  color: #512da8;
+
+  overflow: hidden;
+
+  border-color: #512da8;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+}
+
+:host-context(.menu-item:hover) .sub-menu {
+  left: 100%;
+  width: 72px;
+}

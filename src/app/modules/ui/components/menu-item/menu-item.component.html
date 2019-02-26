@@ -1,0 +1,8 @@
+<li class="menu-item" id="{{id}}">
+  <div routerLink="{{link}}" class="menu-item-link">
+    <span class="menu-item-icon" *ngIf="!!icon"><i class="{{icon}}"></i></span>
+    <span class="menu-item-label">{{label}}</span>
+  </div>
+
+  <app-sub-menu *ngIf="submenu.length > 0" [items]="submenu"></app-sub-menu>
+</li>

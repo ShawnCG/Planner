@@ -1,0 +1,66 @@
+.menu-item {
+  position: relative;
+  transition: left .15s ease-out;
+}
+
+.menu-item-link {
+  width: 72px;
+  height: 72px;
+
+  text-align: center;
+  line-height: 72px;
+
+  position: relative;
+
+  cursor: pointer;
+
+  transition: background-color .15s ease-in-out, color .15s ease-in-out;
+
+  text-align: center;
+}
+
+.menu-item-icon {
+  font-size: 16px;
+
+  transition: font-size .15s ease-in-out;
+}
+
+.menu-item-label {
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: -100%;
+  bottom: 8px;
+
+  font-size: 12px;
+  line-height: 1;
+
+  transition: left .15s ease-out;
+}
+
+.menu-item:hover>.menu-item-link {
+  background-color: #fff;
+  color: #512da8;
+
+}
+
+:host-context(.sub-menu) .menu-item {
+  left: -36px;
+}
+
+:host-context(.menu-item:hover) .menu-item {
+  left: 0;
+}
+
+:host-context(.sub-menu) .menu-item-link {
+  background-color: #fff;
+  color: #512da8;
+}
+
+:host-context(.sub-menu) .menu-item-link:hover>.menu-item-icon {
+  font-size: 24px;
+}
+
+:host-context(ul.menu:hover, .sub-menu) .menu-item-label {
+  left: 0;
+}

@@ -1,12 +1,3 @@
-<header></header>
-<nav>
-    <ul>
-        <li><a routerLink="">Home</a></li>
-        <li><a routerLink="calendar">Calendar</a></li>
-        <li><a routerLink="list">List</a></li>
-    </ul>
-</nav>
-<main>
-    <router-outlet></router-outlet>
-</main>
-<footer></footer>
+<app-menu [items]="getMenuItems()">
+</app-menu>
+<app-content></app-content>

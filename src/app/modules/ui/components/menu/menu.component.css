@@ -1,0 +1,19 @@
+:host {}
+
+ul.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 10;
+
+  padding: 0;
+  margin: 0;
+
+  width: 72px;
+
+  background-color: #512da8;
+
+  color: #fff;
+}
