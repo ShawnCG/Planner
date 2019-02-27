@@ -31,9 +31,17 @@ export class AppComponent implements OnInit {
           "fas fa-search",
           "network"
         )
+        //new MenuItem("demo-item", "Demo", "fas fa-briefcase", "network"),
+        //new MenuItem("demo-item-2", "Demo 2", "fas fa-briefcase", "network"),
       ]),
       new MenuItem("calendar", "Calendar", "fas fa-calendar", "calendar"),
-      new MenuItem("lists", "Lists", "fas fa-list-ul", "lists")
+      new MenuItem("lists", "Lists", "fas fa-list-ul", "lists", [
+        new MenuItem("favorite-1", "Shopping List (demo)", "fas fa-star", "lists/1/"),
+        new MenuItem("favorite-2", "House Repairs (demo)", "fas fa-star", "lists/2/"),
+        new MenuItem("favorite-3", "Christmas List (demo)", "fas fa-star", "lists/3/"),
+        new MenuItem("favorite-4", "Naughty or Nice (demo) ", "fas fa-star", "lists/4/")
+        //new MenuItem("demo-item-2", "Demo 2", "fas fa-briefcase", "network"),
+      ])
     ];
   }
 }

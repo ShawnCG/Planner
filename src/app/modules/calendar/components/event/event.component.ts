@@ -38,7 +38,6 @@ export class EventComponent implements OnInit {
 
     this.week.forEach(
       function(date) {
-        console.log(date.getDate().toString(), this.event.start.day);
         if (date.getDate().toString() == this.event.start.day) {
           start = date.getDay();
         }
@@ -47,9 +46,6 @@ export class EventComponent implements OnInit {
         }
       }.bind(this)
     );
-
-    console.log("start:", start);
-    console.log("end:", end);
 
     if (start === null) {
       classArr.push("start-before");

@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class MenuItemComponent implements OnInit {
   @Input() item: MenuItem;
+  @Input() position: number;
+
+  @Input() topMargin?;
 
   constructor() {}
 
@@ -16,15 +19,15 @@ export class MenuItemComponent implements OnInit {
   }
 
   get label(): string {
-    return this.item.label;
+    return this.item.label || '';
   }
 
   get icon(): string {
-    return this.item.icon;
+    return this.item.icon || '';
   }
 
   get link(): string {
-    return this.item.link;
+    return this.item.link || '';
   }
 
   get submenu(): MenuItem[] {
@@ -32,4 +35,14 @@ export class MenuItemComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  getLabelStyles() {
+    let styles = {};
+    if (this.position > 0) {
+      //styles['transition-delay'] = (this.position * 0.04).toString() + 's';
+    }
+
+    return styles;
+  }
+  
 }

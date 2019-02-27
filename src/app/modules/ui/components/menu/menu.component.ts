@@ -1,5 +1,6 @@
 import { MenuItem } from "./../menu-item/menu-item.class";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewChild } from "@angular/core";
+import { SubMenuComponent } from "../sub-menu/sub-menu.component";
 
 @Component({
   selector: "app-menu",
@@ -12,4 +13,8 @@ export class MenuComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  
+  trackMenuItem(index, item) {
+    return item.id;
+  }
 }

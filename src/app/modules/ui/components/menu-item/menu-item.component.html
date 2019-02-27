@@ -1,8 +1,7 @@
-<li class="menu-item" id="{{id}}">
+<li class="menu-item" [style.margin-top]="topMargin">
   <div routerLink="{{link}}" class="menu-item-link">
     <span class="menu-item-icon" *ngIf="!!icon"><i class="{{icon}}"></i></span>
-    <span class="menu-item-label">{{label}}</span>
+    <span class="menu-item-label" [ngStyle]="getLabelStyles()">{{label}}</span>
   </div>
-
-  <app-sub-menu *ngIf="submenu.length > 0" [items]="submenu"></app-sub-menu>
 </li>
+<app-sub-menu [position]="position" [items]="submenu"></app-sub-menu>

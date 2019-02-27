@@ -1,18 +1,15 @@
-:host {
-  z-index: -10;
-}
+:host {}
 
 .sub-menu {
-  position: absolute;
+  position: fixed;
   padding: 0;
   margin: 0;
-  left: calc(100% - 1px);
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
+  left: 72px;
   transition: width .15s ease-in-out;
 
-
-  z-index: -10;
+  list-style: none;
 
   width: 0;
   background-color: #fff;
@@ -21,12 +18,11 @@
 
   overflow: hidden;
 
-  border-color: #512da8;
-  border-style: solid;
-  border-width: 1px 1px 1px 0;
+  box-shadow: 1px 0 0 #512da8;
 }
 
-:host-context(.menu-item:hover) .sub-menu {
-  left: 100%;
+
+
+:host-context(app-menu-item:hover) .sub-menu {
   width: 72px;
 }
