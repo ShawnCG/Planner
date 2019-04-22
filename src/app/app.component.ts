@@ -1,6 +1,7 @@
 import { MenuItem } from "./modules/ui/components/menu-item/menu-item.class";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
+import { UIService } from "./modules/ui/services/ui.service";
 
 @Component({
   selector: "app-root",
@@ -12,36 +13,29 @@ export class AppComponent implements OnInit {
 
   router = Router;
 
+  constructor(private uiService: UIService) {}
+
   ngOnInit() {}
+
+  getOrientation() {
+    return this.uiService.getOrientation();
+  }
 
   getMenuItems(): MenuItem[] {
     return [
-      new MenuItem("index", "Home", "fas fa-fire", ""),
-      new MenuItem("network", "Demo Item", "fas fa-network-wired", "network", [
-        new MenuItem(
-          "custom-group-1",
-          "Friends",
-          "fas fa-user-friends",
-          "network"
-        ),
-        new MenuItem("custom-group-2", "Work", "fas fa-briefcase", "network"),
-        new MenuItem(
-          "find-connections",
-          "Find More",
-          "fas fa-search",
-          "network"
-        )
-        //new MenuItem("demo-item", "Demo", "fas fa-briefcase", "network"),
-        //new MenuItem("demo-item-2", "Demo 2", "fas fa-briefcase", "network"),
+      new MenuItem("index", "Home", "fas fa-fire", "", [
+        new MenuItem("boards", "Boards", "fas fa-clipboard", "boards")
       ]),
-      new MenuItem("calendar", "Calendar", "fas fa-calendar", "calendar"),
-      new MenuItem("lists", "Lists", "fas fa-list-ul", "lists", [
-        new MenuItem("favorite-1", "Shopping List (demo)", "fas fa-star", "lists/1/"),
-        new MenuItem("favorite-2", "House Repairs (demo)", "fas fa-star", "lists/2/"),
-        new MenuItem("favorite-3", "Christmas List (demo)", "fas fa-star", "lists/3/"),
-        new MenuItem("favorite-4", "Naughty or Nice (demo) ", "fas fa-star", "lists/4/")
-        //new MenuItem("demo-item-2", "Demo 2", "fas fa-briefcase", "network"),
-      ])
+      new MenuItem("network", "Network", "fas fa-network-wired", "network"),
+      new MenuItem("calendar", "Calendar", "fas fa-calendar", "calendar", [
+        new MenuItem("schedules", "Schedules", "fas fa-calendar-alt", "schedules"),
+        new MenuItem("routines", "Routines", "fas fa-redo-alt", "routines")
+      ]),
+      new MenuItem("goals", "Goals", "fas fa-flag-checkered", "goals"),
+      new MenuItem("todo", "Todo", "fas fa-tasks", "tasks"),
+
+      new MenuItem("ui", "UI", "fab fa-uikit", "ui")
+      
     ];
   }
 }

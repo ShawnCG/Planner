@@ -19,6 +19,17 @@ import { ListsFooterComponent } from "./lists-footer/lists-footer.component";
 import { ListsComponent } from "./lists/lists.component";
 import { ListComponent } from "./list/list.component";
 import { UiModule } from "./modules/ui/ui.module";
+import { TestPageComponent } from "./pages/test-page/test-page.component";
+import { UIService } from "./modules/ui/services/ui.service";
+import { FeedPageComponent } from "./pages/feed-page/feed-page.component";
+import { BoardItemComponent } from './components/board/board-item/board-item.component';
+import { BoardComponent } from './components/board/board.component';
+import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
+import { GoalsPageComponent } from './pages/goals-page/goals-page.component';
+import { RoutinesPageComponent } from './pages/routines-page/routines-page.component';
+import { NetworkPageComponent } from './pages/network-page/network-page.component';
+import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
+import { UiPageComponent } from './pages/ui-page/ui-page.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +40,39 @@ import { UiModule } from "./modules/ui/ui.module";
     ListsHeaderComponent,
     ListsFooterComponent,
     ListsComponent,
-    ListComponent
+    ListComponent,
+    TestPageComponent,
+    FeedPageComponent,
+    BoardItemComponent,
+    BoardComponent,
+    TasksPageComponent,
+    GoalsPageComponent,
+    RoutinesPageComponent,
+    NetworkPageComponent,
+    BoardsPageComponent,
+    UiPageComponent
   ],
-  imports: [BrowserModule, UiModule, FormsModule, CalendarModule],
+
+  providers: [UIService],
+
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([
+      { path: "", component: FeedPageComponent },
+      { path: "boards", component: BoardsPageComponent },
+      { path: "network", component: NetworkPageComponent },
+      { path: "calendar", component: CalendarPageComponent },
+      { path: "lists", component: ListsPageComponent },
+      { path: "tasks", component: TasksPageComponent },
+      { path: "routines", component: RoutinesPageComponent },
+      { path: "goals", component: GoalsPageComponent },
+
+      { path: "ui", component: UiPageComponent}
+    ]),
+    UiModule,
+    FormsModule,
+    CalendarModule
+  ],
   bootstrap: [AppComponent],
 
   entryComponents: []

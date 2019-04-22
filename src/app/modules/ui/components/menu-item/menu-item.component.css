@@ -4,6 +4,9 @@
 }
 
 .menu-item {
+  display: block;
+  
+  list-style: none;
   position: relative;
   z-index: 13;
 }
@@ -35,36 +38,40 @@
   display: inline-block;
   width: 100%;
   position: absolute;
-  left: -100%;
+  left: 0;
   bottom: 8px;
-  transform: translateY(0%);
+
+  opacity: 0;
 
   font-size: 12px;
   line-height: 1.21;
 
   padding: 0 4px;
+  
+  transition: opacity .15s ease-in-out;
+}
 
-  transition: left .15s ease-in-out, bottom .15s ease-in-out, transform .15s ease-in-out;
+:host-context(.sub-menu) .menu-item-label {
+  bottom: 36px !important;
+  transform: translateY(50%);
 }
 
 :host-context(ul.menu:hover, .sub-menu) .menu-item-label {
-  left: 0;
+  opacity: 1;
 }
 
+
+:host-context([orientation="portrait"], [orientation="portrait"] .sub-menu) {
+  flex: 1 1 auto;
+}
+
+:host-context([orientation="portrait"]) .menu-item-link {
+  width: auto;
+}
 
 :host:hover>.menu-item>.menu-item-link {
   background-color: #fff;
   color: #512da8;
-}
-
-:host:hover>.menu-item>.menu-item-link>.menu-item-label {
-  bottom: 36px;
-  transform: translateY(50%);
-}
-
-:host:hover>.menu-item>.menu-item-link>.menu-item-icon {
-  opacity: .2;
-  font-size: 32px;
 }
 
 :host-context(.sub-menu) .menu-item-link {
@@ -72,13 +79,8 @@
   color: #512da8;
 }
 
-:host-context(.sub-menu) .menu-item-label {
-  
-  bottom: 36px;
-  transform: translateY(50%);
-}
-
 :host-context(.sub-menu) .menu-item-icon {
   font-size: 32px;
   opacity: .2;
 }
+

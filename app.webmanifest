@@ -1,0 +1,21 @@
+{
+    "name": "Insight Plans",
+    "short_name": "Plans",
+
+    "categories": "Productivity, Lifestyle",
+
+    "start_url": "http://localhost:4200/",
+
+    "icons": [
+        {
+            "src": "src/assets/icon-250.png",
+            "sizes": "250x250",
+            "type": "image/png"
+        }
+    ],
+
+    "theme_color": "#512da8",
+    "background_color": "#ffffff",
+
+    "display": "minimal-ui"
+}

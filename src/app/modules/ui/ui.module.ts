@@ -2,35 +2,40 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
-import { CalendarPageComponent } from "./../../pages/calendar-page/calendar-page.component";
-import { ListsPageComponent } from "./../../pages/lists-page/lists-page.component";
-import { HomePageComponent } from "./../../pages/home-page/home-page.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { MenuItemComponent } from "./components/menu-item/menu-item.component";
 import { SubMenuComponent } from "./components/sub-menu/sub-menu.component";
 import { ContentComponent } from "./components/content/content.component";
+import { HeaderComponent } from './components/header/header.component';
+import { ContainerComponent } from './components/container/container.component';
+import { OrientationDirective } from "./directives/orientation.directive";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot([
-      { path: "", component: HomePageComponent },
-      { path: "calendar", component: CalendarPageComponent },
-      { path: "lists", component: ListsPageComponent }
-    ])
+    RouterModule
   ],
   declarations: [
     MenuComponent,
     MenuItemComponent,
     SubMenuComponent,
-    ContentComponent
+    ContentComponent,
+    HeaderComponent,
+    ContainerComponent,
+
+    OrientationDirective
   ],
 
   exports: [
     MenuComponent,
     MenuItemComponent,
+    HeaderComponent,
     SubMenuComponent,
-    ContentComponent
+    ContentComponent,
+
+    ContainerComponent,
+
+    OrientationDirective
   ]
 })
 export class UiModule {}

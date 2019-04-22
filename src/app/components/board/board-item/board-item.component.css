@@ -1,0 +1,31 @@
+.board-item {
+    background-color: #fff;
+
+    margin: 16px 0;
+
+    border-radius: 4px;
+}
+
+.board-item .title,
+.board-item .content {
+    padding: 20px;
+}
+
+.board-item .title { 
+    padding-bottom: 12px;
+
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+
+    color: #333;
+}
+
+.board-item .content {
+    padding-top: 12px;
+
+    font-size: 14px;
+    line-height: 1.31;
+
+    color: #444444;
+}

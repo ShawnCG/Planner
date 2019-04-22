@@ -4,25 +4,41 @@
   position: fixed;
   padding: 0;
   margin: 0;
-  top: 0;
+  left: 0;
   bottom: 0;
-  left: 72px;
-  transition: width .15s ease-in-out;
+  transition: width .15s ease-in-out, height;
 
   list-style: none;
 
-  width: 0;
   background-color: #fff;
 
   color: #512da8;
 
   overflow: hidden;
-
-  box-shadow: 1px 0 0 #512da8;
 }
 
 
+:host-context([orientation="landscape"]) .sub-menu {
+  width: 0;
 
-:host-context(app-menu-item:hover) .sub-menu {
+  top: 0;
+  left: 72px;
+  box-shadow: 1px 0 0 #512da8;
+  transition: width .15s ease-in-out;
+}
+:host-context([orientation="landscape"] app-menu-item:hover) .sub-menu {
   width: 72px;
+}
+
+:host-context([orientation="portrait"]) .sub-menu {
+  display: flex;
+  height: 0;
+
+  right: 0;
+  bottom: 72px;
+  box-shadow: 0 -1px 0 #512da8;
+  transition: height .15s ease-in-out;
+}
+:host-context([orientation="portrait"] app-menu-item:hover) .sub-menu {
+  height: 72px;
 }

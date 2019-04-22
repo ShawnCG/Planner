@@ -18,7 +18,7 @@ export class SubMenuComponent implements OnInit {
     return item.id;
   }
 
-  getTopMargin() {
+  getMargin() {
     const start = 36 + ((this.position) * 72);
     const margin = start - (this.items.length*72)/2;
     return Math.max(margin, ) + 'px';

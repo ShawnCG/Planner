@@ -10,7 +10,7 @@ export class MenuItemComponent implements OnInit {
   @Input() item: MenuItem;
   @Input() position: number;
 
-  @Input() topMargin?;
+  @Input() margin?;
 
   constructor() {}
 
@@ -43,6 +43,10 @@ export class MenuItemComponent implements OnInit {
     }
 
     return styles;
+  }
+
+  getStyles() {
+    
   }
   
 }
